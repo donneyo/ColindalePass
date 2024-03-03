@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragment:: header}"/>
+	
+<body class="bg-gradient-primary">
+
+    <div class="container">
+
+        <div class="card o-hidden border-0 shadow-lg my-5">
+            <div class="card-body p-0">
+                <!-- Nested Row within Card Body -->
+                <div class="row">
+                    <div class="col-lg-5 d-none d-lg-block">
+                        <img src="img/colindalepark.jpg" width="500" height="600" >
+                    </div>
+                    <div class="col-lg-7">
+                    
+                        <div class="p-5">
+                        <div th:if="${param.success}">
+               				<div class="alert alert-info">You've successfully registered to our app!</div>
+            			</div>
+                            <div class="text-center">
+                                <h1 class="h4 text-gray-900 mb-4">Create an Account!  </h1>
+                            </div>
+                            <form th:action="@{/create_user}" role="form" method="post" th:object="${user}"
+                                            onsubmit="return checkEmailUnique(this);">
+                                <div class="form-group row">
+                                
+	                                <div class="form-group col-sm-6 mb-3 mb-sm-0">
+		                                
+		                                <input type="text" class="form-control" th:field="*{firstName}" placeholder="First Name" id="firstname" name="firstname" required>
+	                            		 <p th:errors="*{firstName}" class="text-danger"
+                          					 th:if="${#fields.hasErrors('firstName')}">
+                       					 </p>
+	                            	</div>
+	                            	
+	                            	  <div class="form-group col-sm-6">
+                        
+		                               <input type="text" class="form-control" th:field="*{lastName}" placeholder="Last Name" id="lastname" name="lastname" required>
+	                           			 <p th:errors="*{lastName}" class="text-danger"
+                          					 th:if="${#fields.hasErrors('lastName')}">
+                      					  </p>
+	                           		 </div>
+                                  
+                                </div>
+                                
+                                 <div class="form-group">
+	                                <input type="email" class="form-control" th:field="*{email}" placeholder="Email Address" id="email" name="email" required>
+                           			 <p th:errors="*{email}" class="text-danger"
+                          				 th:if="${#fields.hasErrors('email')}">
+                       				 </p>
+                           		 </div>
+                                
+                                <div class="form-group">
+								 <input type="password"  class="form-control"  th:field="*{password}" id="password" placeholder="Password" name="password" required>
+									<p th:errors="*{password}" class="text-danger"
+                          				 th:if="${#fields.hasErrors('password')}">
+                        			</p>
+								</div>
+
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label pb-2">Roles:</label>
+                                    <div class="col-sm-10">
+                                        <th:block th:each="role : ${listRoles}">
+                                            <input type="checkbox" th:field="*{roles}"
+                                                   th:text="${role.name}"
+                                                   th:value="${role.id}"
+                                                   class="m-2"
+                                            />
+<!--                                            - <small>[[${role.description}]]</small>-->
+<!--                                            <br/>-->
+                                        </th:block>
+                                    </div>
+                                </div>
+                                
+                               
+                                <button class="btn btn-primary btn-user btn-block" type="submit">
+                                    Register Account
+                                </button>
+                                <hr>
+                                
+                                </form>
+                                <a href="index.html" class="btn btn-google btn-user btn-block">
+                                    <i class="fab fa-google fa-fw"></i> Register with Google
+                                </a>
+                                <a href="index.html" class="btn btn-facebook btn-user btn-block">
+                                    <i class="fab fa-facebook-f fa-fw"></i> Register with Facebook
+                                </a>
+                            
+                            <hr>
+                            <div class="text-center">
+                                <a class="small" href="forgot_password_form.html">Forgot Password?</a>
+                            </div>
+                            <div class="text-center">
+                                <a class="small" th:href="@{/login}">Already have an account? Login!</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script type="text/javascript">
+    function checkEmailUnique(form) {
+    url = contextPath + "customers/check_unique_email";
+    customerEmail = $("#email").val();
+    csrfValue = $("input[name='_csrf']").val();
+
+    params = {email: customerEmail, _csrf: csrfValue};
+
+    $.post(url, params, function(response) {
+    if (response == "OK") {
+    form.submit();
+    } else if (response == "Duplicated") {
+    showWarningModal("There is another cusotmer having the email " + customerEmail);
+    } else {
+    showErrorModal("Unknown response from server");
+    }
+    }).fail(function() {
+    showErrorModal("Could not connect to the server");
+    });
+
+    return false;
+}
+</script>
+</body>
+
+</html>

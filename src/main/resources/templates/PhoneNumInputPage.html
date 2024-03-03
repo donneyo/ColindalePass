@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+
+<head>
+    <title>Code Generation Page</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+
+
+
+
+<div class="container-fluid">
+    <form th:action="@{/logout}" method="post" th:hidden="true" name="logoutForm">
+        <input type="submit" />
+    </form>
+</div>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" th:href="@{/}">
+        <img src="your-logo.png" width="30" height="30" class="d-inline-block align-top" alt="ColindalePass Logo">
+        ColindalePass
+    </a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/}">Home</a>
+            </li>
+            <li class="nav-item dropdown" sec:authorize="hasAuthority('Admin')">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown"
+                   th:href="@{/settings}">Settings</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" th:href="@{/settings#mailServer}">Mail Server</a>
+                    <a class="dropdown-item" th:href="@{/settings#mailTemplate}">Mail Templates</a>
+
+                </div>
+            </li>
+            <li>
+                <span class="fas fa-user fa-2x icon-silver"></span>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown"
+                   th:href="@{/account}"
+                   sec:authentication="principal.fullname"></a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" id="logoutLink" href="">Logout</a>
+                </div>
+            </li>
+        </ul>
+
+    </div>
+</nav>
+<div class="container-fluid">
+    <!-- Your main content goes here -->
+    <div class="container-fluid align-items-center">
+
+        Welcome,
+        <a th:href="@{/account}"
+           sec:authentication="principal.fullname"></a>
+        <span sec:authentication="principal.authorities"></span>
+
+    </div>
+
+    <div class="text-center mt-4">
+        <h1>Colindale-Pass  DashBoard</h1>
+    </div>
+<body>
+
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-header">
+            <h2>Phone Number Input</h2>
+        </div>
+        <div class="card-body">
+            <form action="/send-sms" method="get" th:object="${user}">
+
+                <input type="hidden" th:field="*{id}"/>
+                <div class="form-group">
+                    <label for="phoneNumber">Enter Phone Number:</label>
+                    <input type="text" class="form-control" id="phoneNumber" th:field="*{phoneNumber}">
+                    <!-- You can add validation messages here if needed -->
+                </div>
+
+                <div>
+                    <input type="hidden" class="form-control" th:field="*{email}"  />
+                </div>
+                <div>
+                     <input type="hidden" class="form-control" th:field="*{firstName}"  />
+                </div>
+                <div>
+                    <input type="hidden" class="form-control" th:field="*{lastName}"  />
+                </div>
+<!--                <div th:text="${codeFromFirstPage}"></div>-->
+<!--                    <div>-->
+<!--                        <input type="hidden" class="form-control" th:field="*{code}"  />-->
+<!--                    </div>-->
+
+                <button type="submit" class="btn btn-primary">Send SMS</button>
+            </form>
+
+<!--                <div th:text="${code}"></div>-->
+            <div th:text="${codeFromFirstPage}"></div>
+
+<!--            <p th:if="${code ne null}" class="lead" id="generatedCode">Generated Code: <span th:text="${code}"></span></p>-->
+
+        </div>
+    </div>
+</div>
+</body>
+
+</div>
+</html>
+

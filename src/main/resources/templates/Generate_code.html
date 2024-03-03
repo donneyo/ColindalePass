@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<html lang="en" data-bs-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generate code page</title>
+    <link rel="stylesheet" type="text/css" th:href="@{https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/fontawesome/all.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/style.css}"/>
+<!--    <link rel="stylesheet" th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css}">-->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script type="text/javascript" th:src="@{/webjars/jquery/jquery.min.js}"></script>
+</head>
+
+<body>
+<div class="wrapper">
+    <aside id="sidebar" class="js-sidebar">
+        <!-- Content For Sidebar -->
+        <div class="h-100">
+            <div class="sidebar-logo">
+                <a href="#">ColindalePass
+                    <i class="fa-solid fa-user-lock"></i>
+                </a>
+            </div>
+            <ul class="sidebar-nav">
+                <li class="sidebar-header">
+                    Admin Elements
+                </li>
+                <li class="sidebar-item">
+                    <a th:href="@{/}" class="sidebar-link">
+                        <i class="fa-solid fa-list pe-2"></i>
+                        Dashboard
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link collapsed" data-bs-target="#pages" data-bs-toggle="collapse"
+                       aria-expanded="false"><i class="fa-solid fa-file-lines pe-2"></i>
+                        OTP
+                    </a>
+                    <ul id="pages" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                        <li class="sidebar-item">
+                            <a th:href="@{/Generate-Code-Page}" class="sidebar-link">Generate OTP</a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a th:href="@{/Validate_Code}" class="sidebar-link">Validate OTP</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link collapsed" data-bs-target="#posts" data-bs-toggle="collapse"
+                       aria-expanded="false"><i class="fa-solid fa-sliders pe-2"></i>
+                        Users
+                    </a>
+                    <ul id="posts" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                        <li class="sidebar-item">
+                            <a th:href="@{/users/new}" class="sidebar-link">Create New User</a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a th:href="@{/users}" class="sidebar-link">View User List</a>
+                        </li>
+                        <!--                        <li class="sidebar-item">-->
+                        <!--                            <a href="#" class="sidebar-link">Edit User</a>-->
+                        <!--                        </li>-->
+                    </ul>
+                </li>
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link collapsed" data-bs-target="#auth" data-bs-toggle="collapse"
+                       aria-expanded="false"><i class="fa-regular fa-user pe-2"></i>
+                        Auth
+                    </a>
+                    <ul id="auth" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                        <li class="sidebar-item">
+                            <a th:href="@{/login}" class="sidebar-link">Login</a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a th:href="@{/account}" class="sidebar-link">Update profile</a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="#" class="sidebar-link">Forgot Password</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="sidebar-header">
+                    Share
+                </li>
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link collapsed" data-bs-target="#multi" data-bs-toggle="collapse"
+                       aria-expanded="false"><i class="fa-solid fa-share-nodes pe-2"></i>
+                        Export Pdf
+                    </a>
+                    <ul id="multi" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                        <li class="sidebar-item">
+                            <a href="#" class="sidebar-link collapsed" data-bs-target="#level-1"
+                               data-bs-toggle="collapse" aria-expanded="false">Map</a>
+                            <ul id="level-1" class="sidebar-dropdown list-unstyled collapse">
+                                <li class="sidebar-item">
+                                    <a href="#" class="sidebar-link">Contact Us</a>
+                                </li>
+                                <li class="sidebar-item">
+                                    <a href="#" class="sidebar-link">#</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </aside>
+    <div class="main">
+        <nav class="navbar navbar-expand px-3 border-bottom">
+            <button class="btn" id="sidebar-toggle" type="button">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="d-flex align-items-center ms-auto">
+                <a href="#" class="theme-toggle">
+                    <i class="fa-regular fa-moon"></i>
+                    <i class="fa-regular fa-sun"></i>
+                </a>
+
+            </div>
+
+            <div class="navbar-collapse navbar">
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a href="#" data-bs-toggle="dropdown" class="nav-icon pe-md-0">
+                            <img src="images/profile.jpg" class="avatar img-fluid rounded" alt="">
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end">
+                            <a th:href="@{/account}" class="dropdown-item">Profile</a>
+                            <a th:href="@{/settings}" class="dropdown-item">Setting</a>
+                            <a href="#" class="dropdown-item">Logout</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- content start here -->
+        <div class="hideable-filter">
+          <div class="card border-0">
+              <div class="card-header">
+
+                    <h2 class="display-4">Generate Code</h2>
+
+
+                <form th:action="@{/generateCode}" method="post" id="generateCodeForm" th:object="${user}">
+                    <div>
+                        <input type="hidden" th:field="*{id}"/>
+                    </div>
+
+                    <div>
+                        <input type="hidden" class="form-control" th:field="*{email}"  />
+                    </div>
+                    <div>
+                        <input type="hidden" class="form-control" th:field="*{firstName}"  />
+                    </div>
+                    <div>
+                        <input type="hidden" class="form-control" th:field="*{lastName}"  />
+                    </div>
+                    <!--            <div>-->
+                    <!--                <input type="hidden" class="form-control" th:field="*{username}"  />-->
+                    <!--            </div>-->
+                    <div>
+                        <input type="hidden" class="form-control" th:field="*{verificationCode}"  />
+                    </div>
+
+                    <div>
+                        <input type="hidden" class="form-control" th:field="*{createdTime}"  />
+                    </div>
+
+
+                    <button type="submit"  class="btn btn-primary">Generate Code</button>
+                </form>
+
+
+                  <hr class="my-4">
+
+                  <p th:if="${code ne null}" class="lead" id="generatedCode">Generated Code: <span th:text="${code}"></span></p>
+
+                      <div>
+                          <button  onclick="copyToClipboard()">Copy to Clipboard</button>
+                      </div>
+
+                  <hr class="my-4">
+
+                  <div>
+                    <button onclick="clearCode()" class="btn btn-secondary position-absolute" style="bottom: 10px; right: 0px;">Clear Code</button>
+
+                    <form th:action="@{/phone-number-input}" >
+                        <button type="submit"  class="btn btn-info position-absolute" style="bottom: 10px; right: 120px;">Send SMS</button>
+                    </form>
+
+                    <button id="sendEmailButton" class="btn btn-warning position-absolute" style="bottom: 10px; right: 225px;">Send Email</button>
+
+                  </div>
+
+            </div>
+        </div>
+
+
+
+
+        <footer class="footer">
+            <div class="container-fluid">
+                <div class="row text-muted">
+                    <div class="col-12 text-center">
+                        <p class="mb-0">
+                            <a href="#" class="text-muted">
+                                <strong> &copy;2024 ColindalePass. All rights reserved</strong>
+                            </a>
+                        </p>
+                    </div>
+
+
+                </div>
+            </div>
+        </footer>
+
+
+        <!-- content stop here -->
+
+      </div>
+    </div>
+</div>
+<script type="text/javascript" th:src="@{https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/script.js}"></script>
+<script type="text/javascript">
+    function copyToClipboard() {
+        var codeInput = document.getElementById("generatedCode");
+        var codeText = codeInput.innerText || codeInput.textContent;
+        var tempInput = document.createElement("textarea");
+        tempInput.value = codeText;
+        document.body.appendChild(tempInput);
+        tempInput.select();
+        document.execCommand("copy");
+        document.body.removeChild(tempInput);
+    }
+
+    $(document).ready(function () {
+        $(".link-delete").on("click", function (e) {
+            e.preventDefault();
+            link = $(this);
+            userId = link.attr("userId");
+            $("#yesButton").attr("href", link.attr("href"));
+            $("#confirmText").text("Are you sure you want to delete this user ID " + userId + "?");
+            $("#confirmModal").modal();
+        });
+    });
+
+    $(document).ready(function () {
+        $("#logoutlink").on("click", function (e) {
+            e.preventDefault();
+            document.logoutForm.submit();
+        });
+    });
+
+    function clearCode() {
+        var codeInput = document.getElementById("generatedCode");
+        codeInput.innerText = ""; // or codeInput.textContent = "";
+    }
+
+</script>
+</body>
+
+</html>

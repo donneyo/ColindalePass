@@ -1,0 +1,27 @@
+server:
+  port: 9090
+  servlet:
+    context-path: /colindalePass
+spring:
+  datasource:
+    password: root
+    url: jdbc:mysql://localhost:3306/colindale_pass_db
+    username: root
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+        format_sql: true
+    show-sql: true
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 617643574989-2tkjvoncvt84mqt79du9goa969voukfh.apps.googleusercontent.com
+            client-secret: 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
+            scope:
+              - email
+              - profile

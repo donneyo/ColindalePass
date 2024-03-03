@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<html lang="en" data-bs-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generate code page</title>
+    <link rel="stylesheet" type="text/css" th:href="@{https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/fontawesome/all.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/styles.css}"/>
+    <script type="text/javascript" th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+
+</head>
+<body>
+<div class="container-fluid">
+    <div class="main">
+        <nav class="navbar navbar-expand px-3 border-bottom">
+            <button class="btn" id="sidebar-toggle" type="button">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </nav>
+        <main class="content px-3 py-2">
+            <div class="container-fluid">
+                <div class="mb-3">
+                    <a th:href="@{/map}">Go back to Map</a>
+                </div>
+            </div>
+        </main>
+    </div>
+
+<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <div class="card mb-3">
+                <img src="images/tejuosho1e.jpg" class="d-block w-100" alt="tejuosho1e">
+                <div class="card-body">
+                    <h5 class="card-title">FROM THE TOP OF THE TEJUOSHO BRIDGE</h5>
+                    <p class="card-text">Go down the bridge unto ojuelegba road .</p>
+                    <p class="card-text"><small class="text-muted">keep going straight</small></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="carousel-item">
+            <div class="card mb-3">
+                <img src="images/tejuosho2e.jpg" class="d-block w-100" alt="tejuosho2e">
+                <div class="card-body">
+                    <h5 class="card-title">KEEP GOING STRAIGHT DOWN THE BRIDGE</h5>
+                    <p class="card-text">Keeep going straight unto ojuelegba road.</p>
+                    <p class="card-text"><small class="text-muted">keep eyes on the road as it is always busy than usual</small></p>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <div class="card mb-3">
+                <img src="images/tejuosho3e.jpg" class="d-block w-100" alt="tejuosho3e">
+                <div class="card-body">
+                    <h5 class="card-title">OJUELEGBA ROAD</h5>
+                    <p class="card-text">. Keeep going straight unto ojuelegba road.</p>
+                    <p class="card-text"><small class="text-muted">keep eyes on the road as it is always busy than usual</small></p>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <div class="card mb-3">
+                <img src="images/tejuosho4e.jpg" class="d-block w-100" alt="tejuosho4e">
+                <div class="card-body">
+                    <h5 class="card-title">KEEP HEADING STRAIGHT</h5>
+                    <p class="card-text">In about 100m there is a turning ahead.</p>
+                    <p class="card-text"><small class="text-muted">Slow down as you approach the turning ahead</small></p>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <div class="card mb-3">
+                <img src="images/tejuosho5e.jpg" class="d-block w-100" alt="tejuosho5e">
+                <div class="card-body">
+                    <h5 class="card-title">MAKE A SHARP TURN</h5>
+                    <p class="card-text"> make a sharp turn to the other side of ojuelegba road.</p>
+                    <p class="card-text"><small class="text-muted">keep going straight after the turning</small></p>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <div class="card mb-3">
+                <img src="images/tejuosho6e.jpg" class="d-block w-100" alt="tejuosho6e">
+                <div class="card-body">
+                    <h5 class="card-title">KEEP HEADING BACK TOWARDS TEJUOSHO COMPLEX</h5>
+                    <p class="card-text">Go slowly as a lot of traffic is here than usual.</p>
+                    <p class="card-text"><small class="text-muted">head towards tejuosho complex </small></p>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <div class="card mb-3">
+                <img src="images/tejuosho7e.jpg" class="d-block w-100" alt="tejuosho7e">
+                <div class="card-body">
+                    <h5 class="card-title">TURN RIGHT INTO TEJUOSHO COMPLEX</h5>
+                    <p class="card-text"> Keep heading straight down.</p>
+                    <p class="card-text"><small class="text-muted">Turn right.</small></p>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <div class="card mb-3">
+                <img src="images/tejuosho8e.jpg" class="d-block w-100" alt="tejuosho8e">
+                <div class="card-body">
+                    <h5 class="card-title">KEEP HEADING STRAIGHT DOWN INTO TEJUOSHO AvENUE</h5>
+                    <p class="card-text">Turn right at the end of the road.</p>
+                    <p class="card-text"><small class="text-muted">In about 50m turn right into tejuosho rd</small></p>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <div class="card mb-3">
+                <img src="images/tejuosho9e.jpg" class="d-block w-100" alt="tejuosho9e">
+                <div class="card-body">
+                    <h5 class="card-title">MAKE A TURN INTO TEJUOSHO ROAD </h5>
+                    <p class="card-text">Turn right into tejuosho road and keep head up fo the next turning in about 20m</p>
+                    <p class="card-text"><small class="text-muted">In about 20m turn left into Awonaike cresent</small></p>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <div class="card mb-3">
+                <img src="images/tejuosho10e.jpg" class="d-block w-100" alt="tejuosho10e">
+                <div class="card-body">
+                    <h5 class="card-title">MAKE A TURN INTO TEJUOSHO ROAD </h5>
+                    <p class="card-text">Turn right into tejuosho road and keep head up fo the next turning in about 20m</p>
+                    <p class="card-text"><small class="text-muted">In about 20m turn left into Awonaike cresent</small></p>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <div class="card mb-3">
+                <img src="images/tejuosho11e.jpg" class="d-block w-100" alt="tejuosho11e">
+                <div class="card-body">
+                    <h5 class="card-title">MAKE A TURN INTO AWONAIKE CRESCENT</h5>
+                    <p class="card-text">Turn left into awonaike crescent and head down the street</p>
+                    <p class="card-text"><small class="text-muted">In about 20m turn left into adedapo st</small></p>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <div class="card mb-3">
+                <img src="images/tejuosho12e.jpg" class="d-block w-100" alt="tejuosho12e">
+                <div class="card-body">
+                    <h5 class="card-title">MAKE A TURN INTO ADEDAPO ST</h5>
+                    <p class="card-text">Turn left into adedapo st and head down the street</p>
+                    <p class="card-text"><small class="text-muted">Keep heading straight into ONITANA St</small></p>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <div class="card mb-3">
+                <img src="images/tejuosho13e.jpg" class="d-block w-100" alt="tejuosho13e">
+                <div class="card-body">
+                    <h5 class="card-title">MAKE A LEFT TURN INTO ONITANA ST</h5>
+                    <p class="card-text">Keep heading straight then make a left turn into onitana st</p>
+                    <p class="card-text"><small class="text-muted">In about 20m turn left into onitana st</small></p>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <div class="card mb-3">
+                <img src="images/tejuosho14e.jpg" class="d-block w-100" alt="tejuosho14e">
+                <div class="card-body">
+                    <h5 class="card-title">TURN LEFT INTO ONITANA ST</h5>
+                    <p class="card-text">Turn left into onitana st and head down the street</p>
+                    <p class="card-text"><small class="text-muted">In about 200 head staight on onitana st</small></p>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <div class="card mb-3">
+                <img src="images/tejuosho15e.jpg" class="d-block w-100" alt="tejuosho15e">
+                <div class="card-body">
+                    <h5 class="card-title">KEEP GOING DOWN THE STREET < YOU ARE ALMOST THERE</h5>
+                    <p class="card-text">Colindale estata gate is just around the left corner, keep going.</p>
+                    <p class="card-text"><small class="text-muted">In about 150m turn left into colindale estate gate</small></p>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <div class="card mb-3">
+                <img src="images/airporthotel6e.jpg" class="d-block w-100" alt="airporthotel6e">
+                <div class="card-body">
+                    <h5 class="card-title">Colindale park Estate</h5>
+                    <p class="card-text">You have arrived at your destination </p>
+                    <p class="card-text"><small class="text-muted">Submit your entrance code to the security for check.</small></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+
+</div>
+
+</body>
+</html>

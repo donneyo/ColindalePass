@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<html lang="en" data-bs-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colindale Pass</title>
+    <link rel="stylesheet" type="text/css" th:href="@{https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/fontawesome/all.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/style.css}"/>
+    <script type="text/javascript" th:src="@{/webjars/jquery/jquery.min.js}"></script>
+</head>
+
+<body>
+<div class="wrapper">
+    <aside id="sidebar" class="js-sidebar">
+        <!-- Content For Sidebar -->
+        <div class="h-100">
+            <div class="sidebar-logo">
+                <a href="#">ColindalePass
+                    <i class="fa-solid fa-user-lock"></i>
+                </a>
+            </div>
+            <ul class="sidebar-nav">
+                <li class="sidebar-header">
+                    Admin Elements
+                </li>
+                <li class="sidebar-item">
+                    <a th:href="@{/}" class="sidebar-link">
+                        <i class="fa-solid fa-list pe-2"></i>
+                        Dashboard
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link collapsed" data-bs-target="#pages" data-bs-toggle="collapse"
+                       aria-expanded="false"><i class="fa-solid fa-file-lines pe-2"></i>
+                        OTP
+                    </a>
+                    <ul id="pages" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                        <li class="sidebar-item">
+                            <a th:href="@{/Generate-Code-Page}" class="sidebar-link">Generate OTP</a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a th:href="@{/Validate_Code}" class="sidebar-link">Validate OTP</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link collapsed" data-bs-target="#posts" data-bs-toggle="collapse"
+                       aria-expanded="false"><i class="fa-solid fa-sliders pe-2"></i>
+                        Users
+                    </a>
+                    <ul id="posts" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                        <li class="sidebar-item">
+                            <a th:href="@{/users/new}" class="sidebar-link">Create New User</a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a th:href="@{/users}" class="sidebar-link">View User List</a>
+                        </li>
+<!--                        <li class="sidebar-item">-->
+<!--                            <a href="#" class="sidebar-link">Edit User</a>-->
+<!--                        </li>-->
+                    </ul>
+                </li>
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link collapsed" data-bs-target="#auth" data-bs-toggle="collapse"
+                       aria-expanded="false"><i class="fa-regular fa-user pe-2"></i>
+                        Auth
+                    </a>
+                    <ul id="auth" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                        <li class="sidebar-item">
+                            <a th:href="@{/login}" class="sidebar-link">Login</a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a th:href="@{/account}" class="sidebar-link">Update profile</a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="#" class="sidebar-link">Forgot Password</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="sidebar-header">
+                    Share
+                </li>
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link collapsed" data-bs-target="#multi" data-bs-toggle="collapse"
+                       aria-expanded="false"><i class="fa-solid fa-share-nodes pe-2"></i>
+                        Export Pdf
+                    </a>
+                    <ul id="multi" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                        <li class="sidebar-item">
+                            <a href="#" class="sidebar-link collapsed" data-bs-target="#level-1"
+                               data-bs-toggle="collapse" aria-expanded="false">Map</a>
+                            <ul id="level-1" class="sidebar-dropdown list-unstyled collapse">
+                                <li class="sidebar-item">
+                                    <a href="#" class="sidebar-link">Contact Us</a>
+                                </li>
+                                <li class="sidebar-item">
+                                    <a href="#" class="sidebar-link">#</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </aside>
+    <div class="main">
+        <nav class="navbar navbar-expand px-3 border-bottom">
+            <button class="btn" id="sidebar-toggle" type="button">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="d-flex align-items-center ms-auto">
+                <a href="#" class="theme-toggle">
+                    <i class="fa-regular fa-moon"></i>
+                    <i class="fa-regular fa-sun"></i>
+                </a>
+
+            </div>
+
+            <div class="navbar-collapse navbar">
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a href="#" data-bs-toggle="dropdown" class="nav-icon pe-md-0">
+                            <img src="images/profile.jpg" class="avatar img-fluid rounded" alt="">
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end">
+                            <a th:href="@{/account}" class="dropdown-item">Profile</a>
+                            <a th:href="@{/settings}" class="dropdown-item">Setting</a>
+                            <a href="#" class="dropdown-item">Logout</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- content start here -->
+
+
+        <!-- Table Element -->
+        <div class="full-details">
+            <table class="table table-bordered table-striped table-hover table-responsive-xl">
+                <thead class="thead-dark">
+                <tr>
+                    <th class="hideable-column">
+                    <th th:replace="fragments :: column_link('id', 'User ID', 'tag')" />
+                    </th>
+
+                    <th class="subheading">Photos</th>
+
+                    <th class="hideable-column">
+                    <th th:replace="fragments :: column_link('email', 'E-mail', 'tag')" />
+                    </th>
+
+                    <th th:replace="fragments :: column_link('firstName', 'First Name', 'none')" />
+                    <th th:replace="fragments :: column_link('lastName', 'Last Name', 'none')" />
+
+                    <th class="subheading">Roles</th>
+                    <th th:replace="fragments :: column_link('enabled', 'Enabled', 'none')" />
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="user : ${listUsers}">
+                    <td class="hideable-column">[[${user.id}]]</td>
+                    <td>
+                        <span th:if="${user.photos == null}" class="fas fa-portrait fa-3x icon-silver"></span>
+                        <img th:if="${user.photos != null}" th:src="@{${user.photosImagePath}}"
+                             style="width: 100px" />
+                    </td>
+                    <td class="hideable-column">[[${user.email}]]</td>
+                    <td>[[${user.firstName}]]</td>
+                    <td>[[${user.lastName}]]</td>
+                    <td>[[${user.roles}]]</td>
+
+                    <td>
+                        <div th:replace="fragments :: user_status" />
+                    </td>
+
+                    <td>
+                        <div th:replace="fragments :: user_actions" />
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="less-details">
+            <div th:each="user : ${listUsers}" class="row m-1">
+                <div class="col-4">
+                    <div th:replace="fragments :: user_photos" />
+                </div>
+                <div class="col-8">
+                    <div>[[${user.fullName}]]</div>
+                    <div>[[${user.roles}]]</div>
+                    <div class="mt-2">
+                        <div th:replace="fragments :: user_status" />
+                        &nbsp;
+                        <div th:replace="fragments :: user_actions" />
+                    </div>
+                </div>
+                <div>&nbsp;</div>
+            </div>
+        </div>
+
+        <div class="text-center m-1" th:if="${totalItems > 0}">
+            <span>Showing users # [[${startCount}]] to [[${endCount}]] of [[${totalItems}]]</span>
+        </div>
+        <div class="text-center m-1" th:unless="${totalItems > 0}">
+            <span>No users found</span>
+        </div>
+
+        <div th:if="${totalPages > 1}">
+            <nav>
+                <ul class="pagination justify-content-center flex-wrap">
+                    <li th:class="${currentPage > 1 ? 'page-item' : 'page-item disabled'}">
+                        <a th:replace="fragments :: page_link(1, 'First')"></a>
+                    </li>
+                    <li th:class="${currentPage > 1 ? 'page-item' : 'page-item disabled'}">
+                        <a th:replace="fragments :: page_link(${currentPage - 1}, 'Previous')"></a>
+                    </li>
+
+                    <li th:class="${currentPage != i ? 'page-item': 'page-item active'}"
+                        th:each="i : ${#numbers.sequence(1, totalPages)}">
+                        <a th:replace="fragments :: page_link(${i}, ${i})"></a>
+                    </li>
+
+                    <li th:class="${currentPage < totalPages ? 'page-item' : 'page-item disabled'}">
+                        <a th:replace="fragments :: page_link(${currentPage + 1}, 'Next')"></a>
+                    </li>
+
+                    <li th:class="${currentPage < totalPages ? 'page-item' : 'page-item disabled'}">
+                        <a th:replace="fragments :: page_link(${totalPages}, 'Last')"></a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+
+
+        <div class="modal fade text-center" id="confirmModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Delete Confirmation</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <div class="modal-body">
+                        <span id="confirmText"></span>
+                    </div>
+
+                    <div class="modal-footer">
+                        <a class="btn btn-success" href="" id="yesButton">Yes</a>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+        <footer class="footer">
+            <div class="container-fluid">
+                <div class="row text-muted">
+                    <div class="col-12 text-center">
+                        <p class="mb-0">
+                            <a href="#" class="text-muted">
+                                <strong> &copy;2024 ColindalePass. All rights reserved</strong>
+                            </a>
+                        </p>
+                    </div>
+
+
+                </div>
+            </div>
+        </footer>
+
+
+        <!-- content stop here -->
+
+
+    </div>
+</div>
+<script type="text/javascript" th:src="@{https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/script.js}"></script>
+<script type="text/javascript">
+     $(document).ready(function(){
+      $("#logoutlink").on("click", function(e){
+      e.preventDefault();
+      document.logoutForm.submit();
+      });
+    });
+
+    function clearFilter() {
+        window.location = "[[@{/users}]]";
+    }
+</script>
+</body>
+
+</html>

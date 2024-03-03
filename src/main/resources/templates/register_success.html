@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0">
+
+<title>Registration Successful</title>
+
+<link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+<script type="text/javascript" th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script type="text/javascript"th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+<!--link rel="stylesheet" type="text/css" th:href="@{/styles.css}" /-->
+</head>
+<body>
+
+<div class="container mt-5">
+    <div class="alert alert-success" role="alert">
+        <h4 class="alert-heading">Registration Successful!</h4>
+        <p>Your registration has been successfully completed. You can now log in.</p>
+        <hr>
+        <p class="mb-0"><a href="/login" class="btn btn-primary">Log In</a></p>
+    </div>
+</div>
+
+<div class="text-center">
+		<h2>Admin Registration</h2>
+		<h4>You have registered successfully as an Admin</h4>
+		<p>Please check your email to verify our account.</p>
+		<p><a th:href="@{/login}">Login here</a></p>
+	</div>
+
+</body>
+</html>
